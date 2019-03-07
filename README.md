@@ -24,10 +24,9 @@ In part 2 a webapp is built that uses the model trained in part 1 to categorize 
 
 7. run.py
 
-    /templates
-    
-    8. master.html
-    9. go.html
+/templates
+8. master.html
+9. go.html
 
 ### How to Use the App:
 1. Clone the repository to your local machine.
