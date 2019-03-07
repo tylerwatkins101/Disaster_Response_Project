@@ -2,24 +2,30 @@
 
 ### Project Summary
 The project is broken into 2 parts:
-    In part 1 raw data provdied by Figure Eight is extracted from messages sent during a disaster. These messages are passed through an ETL pipeline and stored in an SQL database. The data is then read in from the SQL database, cleaned, and prepared to fit a machine learning model. That model is then saved in a pickle file for use in part 2.
+
+In part 1 raw data provdied by Figure Eight is extracted from messages sent during a disaster. These messages are passed through an ETL pipeline and stored in an SQL database. The data is then read in from the SQL database, cleaned, and prepared to fit a machine learning model. That model is then saved in a pickle file for use in part 2.
     
-    In part 2 a webapp is built that uses the model trained in part 1 to categorize new text messages entered in through the app interface to decide whether the message indicates a need of response. The app also provides several visualizations of the original disaster messages.
+In part 2 a webapp is built that uses the model trained in part 1 to categorize new text messages entered in through the app interface to decide whether the message indicates a need of response. The app also provides several visualizations of the original disaster messages.
 
 ### File Descriptions
 /data
+
 1. process_data.py
 2. disaster_categories.csv
 3. disaster_messages.csv
 4. DisasterResponse.db
 
 /models
+
 5. train_classifier.py
 6. classifier.pkl
 
 /app
+
 7. run.py
+
     /templates
+    
     8. master.html
     9. go.html
 
