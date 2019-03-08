@@ -60,7 +60,17 @@ Required:
 
     `python run.py`
 
-4. Go to http://0.0.0.0:3001/ or http://localhost:3001/ to interact with the web app.
+4. Go to http://0.0.0.0:3001/ or http://localhost:3001/ to interact with the web app. 
+
+## Project Challenges
+
+Text messages could be classified into one or more of 36 categories for disaster relief response. One of the main challenges in building this app was how to train the machine learning model for classification of categories with rare and/or severely consequential events such as people in need of food, or children missing. These factors play a major role in whether the classifier should prioritize recall or precision for various categories.
+
+Another major factor in determining the type of errors we prefer the classifier to make is the availability of support resources for various categories of needs.
+
+For this project, the model was optimized in terms of a weighted-f1 score evaluation. However, with more information about the available support resources a more situationally tailored model could be built.
+
+
 
 ## References and Acknowledgements
 
