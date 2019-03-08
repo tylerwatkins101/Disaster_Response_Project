@@ -2,8 +2,6 @@
 
 ## Project Summary
 
-The project is broken into 2 parts:
-
 #### Part 1: ETL Pipeline and Training ML Classification Algorithm
 
 In part 1, raw text data provided by Figure Eight is extracted from messages sent during a disaster. These messages are cleaned and restuctured in an ETL pipeline and stored in an SQL database. The data is then read in from the SQL database, prepared and fit to a machine learning model. That model is then saved in a pickle file for use in part 2.
@@ -53,6 +51,7 @@ Optional:
 Required:
 
 3. Run the following command in the app's directory to run your web app.
+
     `python run.py`
 
 4. Go to http://0.0.0.0:3001/ or http://localhost:3001/ to interact with the web app.
