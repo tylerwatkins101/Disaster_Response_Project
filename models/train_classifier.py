@@ -5,7 +5,7 @@ nltk.download(['punkt', 'wordnet', 'averaged_perceptron_tagger'])
 import re
 import numpy as np
 import pandas as pd
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize, RegexpTokenizer
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 
@@ -36,11 +36,12 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
-    tokens = word_tokenize(text)
+    tokens = RegexpTokenizer(r'\w+').tokenize(text)
+    less_tokens = [w for w in tokens if w not in stopwords.words('english')]
     lemmatizer = WordNetLemmatizer()
 
     clean_tokens = []
-    for tok in tokens:
+    for tok in less_tokens:
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
         clean_tokens.append(clean_tok)
 
@@ -48,6 +49,19 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    Parameters for model selected using GridSearchCV as follows:
+    parameters = {
+    'clf__estimator__n_estimators': [50, 100],
+    'clf__estimator__min_samples_split': [3, 4]
+    }
+    cv = GridSearchCV(pipeline, param_grid=parameters, scoring = 'f1_weighted')
+    cv.fit(X,Y)
+    cv.best_params_
+
+    Code not run here because it takes over an hour to run on a single machine
+    Simpler model fit here to reduce model size on github
+    '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -62,7 +76,6 @@ def evaluate_model(model, X_test, Y_test, category_names):
     for i in range(len(category_names)):
         print("Category: "+category_names[i])
         print(classification_report(Y_test.values[:,i], pd.DataFrame(Y_pred)[i]))
-
 
 
 def save_model(model, model_filepath):
