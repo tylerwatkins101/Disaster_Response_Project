@@ -43,7 +43,8 @@ Here we see a screenshot of the app functioning:
 
 ### Dependencies
 
-- python3
+To use the app you'll need a python3 installation with the following packages installed:
+
 - numpy
 - pandas
 - sklearn
