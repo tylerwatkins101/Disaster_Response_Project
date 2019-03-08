@@ -42,6 +42,8 @@ Here we see a screenshot of the app functioning:
 ## How to Use the App:
 1. Clone the repository to your local machine.
 
+`git clone https://github.com/tylerwatkins101/Disaster_Response_Project.git`
+
 Optional:
 
 2. Run the following commands in the project's root directory to set up a new database and model.
