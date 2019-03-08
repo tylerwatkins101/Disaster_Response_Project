@@ -40,6 +40,20 @@ Here we see a screenshot of the app functioning:
 9. go.html - html for web app message classification function
 
 ## How to Use the App:
+
+### Dependencies
+
+- python3
+- numpy
+- pandas
+- sklearn
+- nltk
+- sqlalchemy
+- plotly
+- flask
+
+### Steps to Use the App
+
 1. Clone the repository to your local machine.
 
 `git clone https://github.com/tylerwatkins101/Disaster_Response_Project.git`
