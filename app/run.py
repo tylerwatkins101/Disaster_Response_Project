@@ -1,5 +1,6 @@
 import json
 import plotly
+import numpy as np
 import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
@@ -27,7 +28,7 @@ def tokenize(text):
 
 # load data
 engine = create_engine('sqlite:///../data/DisasterResponse.db')
-df = pd.read_sql_table('SELECT * FROM labelled_messages', engine)
+df = pd.read_sql_table('labelled_messages', engine)
 
 # load model
 model = joblib.load("../models/classifier.pkl")
@@ -38,29 +39,59 @@ model = joblib.load("../models/classifier.pkl")
 @app.route('/index')
 def index():
 
-    # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
+    # extract data needed for original visual
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
 
+    # extract data needed for visual 1
+    df_critical = df[['food','water','shelter','medical_help','missing_people','death']]
+    critical_percentages = round(df_critical.apply(np.mean).sort_values(ascending=False)*100,2)
+    critical_names = list(critical_percentages.index)
+
+    # extract data needed for visual 2
+    df_breakdowns = df[['related','request','offer']]
+    breakdown_totals = df_breakdowns.apply(sum).sort_values(ascending=False)
+    breakdown_names = list(breakdown_totals.index)
+    breakdown_totals = list(breakdown_totals.values)
+    breakdown_totals.insert(0,len(df))
+    breakdown_names.insert(0,'total')
+    breakdown_names[1] = 'related_to_event'
+
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
         {
             'data': [
                 Bar(
-                    x=genre_names,
-                    y=genre_counts
+                    x=breakdown_names,
+                    y=breakdown_totals
                 )
             ],
 
             'layout': {
-                'title': 'Distribution of Message Genres',
+                'title': 'Messages Received During Event',
                 'yaxis': {
-                    'title': "Count"
+                    'title': "Total"
                 },
                 'xaxis': {
-                    'title': "Genre"
+                    'title': "Major Message Categories"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=critical_names,
+                    y=critical_percentages
+                )
+            ],
+
+            'layout': {
+                'title': 'Percentage of Messages Related to Critical Needs',
+                'yaxis': {
+                    'title': "Percentage"
+                },
+                'xaxis': {
+                    'title': "Critical Message Categories"
                 }
             }
         }
