@@ -17,13 +17,14 @@ In part 2, a web app is built to demonstrate the message classification capabili
 /data
 
 1. process_data.py - Python script for ETL pipeline
-2. disaster_categories.csv & disaster_messages.csv - raw data from Figure Eight
-3. DisasterResponse.db - SQL database created as part of ETL pipeline
+2. disaster_categories.csv - raw data from Figure Eight
+3. disaster_messages.csv - raw data from Figure Eight
+4. DisasterResponse.db - SQL database created as part of ETL pipeline
 
 /models
 
-4. train_classifier.py - Python script for training classification model
-5. classifier.pkl - After training model is stored in this pickle file for use with the web app
+5. train_classifier.py - Python script for training classification model
+6. classifier.pkl - After training, the model is stored in this pickle file for use with the web app
 
 /app
 
@@ -42,8 +43,11 @@ Optional:
 2. Run the following commands in the project's root directory to set up a new database and model.
 
     - To run the ETL pipeline that cleans the raw data and stores it in a new database DisasterResponse.db
+    
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        
     - To run the ML pipeline that trains a new classifier and saves it in classifier.pkl
+    
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 Required:
@@ -55,5 +59,5 @@ Required:
 
 ## References and Acknowledgements
 
-- This project was done with data from Figure Eight.
-- The web app template was created using flask and is part of the Udacity Data ScientistNanodegree program.
+- Data used for training the classification model was provided by Figure Eight.
+- The backend template for the web app is built with flask and was provided as part of the Udacity Data Scientist Nanodegree program.
