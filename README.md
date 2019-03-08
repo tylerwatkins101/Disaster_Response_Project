@@ -18,23 +18,23 @@ Here we see a screenshot of the app functioning:
 
 ## Project File Descriptions
 
-/data
+#### /data folder
 
 1. process_data.py - Python script for ETL pipeline
 2. disaster_categories.csv - raw data from Figure Eight
 3. disaster_messages.csv - raw data from Figure Eight
 4. DisasterResponse.db - SQL database created as part of ETL pipeline
 
-/models
+#### /models folder
 
 5. train_classifier.py - Python script for training classification model
 6. classifier.pkl - After training, the model is stored in this pickle file for use with the web app
 
-/app
+#### /app folder
 
 7. run.py - Python script for running the web app
 
-/templates
+#### /templates folder
 
 8. master.html - html for web app homepage
 9. go.html - html for web app message classification function
