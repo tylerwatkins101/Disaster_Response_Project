@@ -4,12 +4,14 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    ''' load raw text data '''
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = pd.merge(messages, categories, on='id')
     return df
 
 def clean_data(df):
+    ''' convert category data into 36 individual binary columns and re-merge dataframes '''
     # create a dataframe of the 36 individual category columns
     categories = df.categories.str.split(pat = ';', expand=True)
     # select the first row of the categories dataframe
@@ -36,6 +38,7 @@ def clean_data(df):
     return df
 
 def save_data(df, database_filename):
+    ''' export dataframe to sql database '''
     engine = create_engine('sqlite:///'+database_filename)
     df.to_sql('labelled_messages', engine, index=False, if_exists='replace')
 
