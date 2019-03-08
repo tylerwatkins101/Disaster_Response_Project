@@ -73,7 +73,7 @@ Optional:
 
 Required:
 
-3. Run the following command in the app's directory to run your web app.
+3. Run the following command in the app's directory to run the web app.
 
     `python run.py`
 
