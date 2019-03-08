@@ -1,44 +1,59 @@
-# Disaster Response Pipeline Project
+# Disaster Response Application Project
 
-### Project Summary
+## Project Summary
+
 The project is broken into 2 parts:
 
-In part 1 raw data provdied by Figure Eight is extracted from messages sent during a disaster. These messages are passed through an ETL pipeline and stored in an SQL database. The data is then read in from the SQL database, cleaned, and prepared to fit a machine learning model. That model is then saved in a pickle file for use in part 2.
-    
-In part 2 a webapp is built that uses the model trained in part 1 to categorize new text messages entered in through the app interface to decide whether the message indicates a need of response. The app also provides several visualizations of the original disaster messages.
+#### Part 1: ETL Pipeline and Training ML Classification Algorithm
 
-### File Descriptions
+In part 1, raw text data provided by Figure Eight is extracted from messages sent during a disaster. These messages are cleaned and restuctured in an ETL pipeline and stored in an SQL database. The data is then read in from the SQL database, prepared and fit to a machine learning model. That model is then saved in a pickle file for use in part 2.
+
+#### Part 2: Web App for Message Classification
+
+In part 2, a web app is built to demonstrate the message classification capabilities of the ML model trained in part 1. New text messages can be entered through the web app interface and are visually classified according to disaster response category. The app also provides several summary visualizations of the original disaster messages.
+
+## Project File Descriptions
+
 /data
 
-1. process_data.py
-2. disaster_categories.csv
-3. disaster_messages.csv
-4. DisasterResponse.db
+1. process_data.py - Python script for ETL pipeline
+2. disaster_categories.csv & disaster_messages.csv - raw data from Figure Eight
+3. DisasterResponse.db - SQL database created as part of ETL pipeline
 
 /models
 
-5. train_classifier.py
-6. classifier.pkl
+4. train_classifier.py - Python script for training classification model
+5. classifier.pkl - After training model is stored in this pickle file for use with the web app
 
 /app
 
-7. run.py
+7. run.py - Python script for running the web app
 
 /templates
 
-8. master.html
-9. go.html
+8. master.html - html for web app homepage
+9. go.html - html for web app message classification function
 
-### How to Use the App:
+## How to Use the App:
 1. Clone the repository to your local machine.
-2. Run the following commands in the project's root directory to set up your database and model.
 
-    - To run ETL pipeline that cleans data and stores in database
+Optional:
+
+2. Run the following commands in the project's root directory to set up a new database and model.
+
+    - To run the ETL pipeline that cleans the raw data and stores it in a new database DisasterResponse.db
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run ML pipeline that trains classifier and saves
+    - To run the ML pipeline that trains a new classifier and saves it in classifier.pkl
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+Required:
 
 3. Run the following command in the app's directory to run your web app.
     `python run.py`
 
-3. Go to http://0.0.0.0:3001/
+4. Go to http://0.0.0.0:3001/ or http://localhost:3001/ to interact with the web app.
+
+## References and Acknowledgements
+
+- This project was done with data from Figure Eight.
+- The web app template was created using flask and is part of the Udacity Data ScientistNanodegree program.
