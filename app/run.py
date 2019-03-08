@@ -17,6 +17,7 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 def tokenize(text):
+    ''' tokenize raw text data before tf-idf transformation '''
     tokens = RegexpTokenizer(r'\w+').tokenize(text)
     less_tokens = [w for w in tokens if w not in stopwords.words('english')]
     lemmatizer = WordNetLemmatizer()
