@@ -10,6 +10,12 @@ In part 1, raw text data provided by Figure Eight is extracted from messages sen
 
 In part 2, a web app is built to demonstrate the message classification capabilities of the ML model trained in part 1. New text messages can be entered through the web app interface and are visually classified according to disaster response category. The app also provides several summary visualizations of the original disaster messages.
 
+Here we see a screenshot of the app functioning:
+
+![Alt text](Photos/app1.png?raw=true "Title")
+
+![Alt text](Photos/app2.png?raw=true "Title")
+
 ## Project File Descriptions
 
 /data
